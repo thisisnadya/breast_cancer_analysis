@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Breast Cancer Prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: black;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('{{ url_for('static', filename='source/background.jpg') }}');
+  min-height: 100%;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> DESKRIPSI</a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> ANGGOTA</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">DESKRIPSI</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
+    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><span class="w3-hide-small"></span> BREAST CANCER PREDICTION</span>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">DESKRIPSI</h3>
+  <p class="w3-center"><em>Breast Cancer Prediction</em></p>
+  <p>Kecerdasan buatan memiliki banyak aplikasi di dunia nyata. Salah satunya AI bisa digunakan untuk peramalan, deteksi objek, deteksi wajah, deteksi penyakit, dan lain-lain. 
+    Tentunya untuk bisa melakukan itu semua, tidak lepas dari machine learning, yaitu algoritma di balik kehebatan AI itu sendiri. 
+    Disini kami menggunakan AI untuk membuat website yang dapat mendeteksi kanker payudara berdasarkan masukkan user. Masukkan user nantinya dianalisis menggunakan clustering
+    untuk mengetahui user tergolong kedalam kelompok apa. Clustering yang kita gunakan terdapat 2 kelompok. Kelompok tersebut meliputi "berkemungkinan besar" atau "berkemungkinan kecil".</p>
+
+<!-- Button -->
+<div class="mt-40 flex flex-col items-center" id="btn">
+  <a href="/start" class="bg-gray-100 text-gray-900 hover:bg-green-700 hover:text-white font-bold py-4 px-8 rounded text-xl transition-all
+  " >GET START</a>
+</div>
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center">ML KECEHH</h3><br>
+  <p class="w3-center"><em>Anggota Kelompok :</em></p><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center flex items-center" style="margin-left: 170px;" >
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/jodi.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div>Muhamad Sultan Jodi Perwira</div>
+    </div>
+
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/fian.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div></div>Alfian Putra Setyawan
+    </div>
+
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/fahmi.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div></div>Hanif Nurul Fahmi
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section" style="margin-left: 170px;">
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/jay.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div></div>Farid Reza Nurhuda
+    </div>
+
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/nadya.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div></div>Nadya Mumtazah
+    </div>
+
+    <div class="w3-col m3 flex items-center">
+      <img src="{{ url_for('static', filename='source/maya.png') }}" alt="image" height="70" width="70" onclick="onClick(this)" class="w3-hover-opacity"></img> <div></div>Maya Nurul Nikmah
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="image" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+</div>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("image").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
